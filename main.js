@@ -43,8 +43,6 @@ class Cactus {
     this.height = 50;
   }
   draw() {
-    // ctx.fillStyle = "red";
-    // ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(cactusImg, this.x, this.y, this.width, this.height);
   }
 }
@@ -116,8 +114,8 @@ function playFrame() {
 playFrame();
 
 function checkCrash(dino, cactus) {
-  const xDiff = cactus.x - (dino.x + dino.width);
-  const yDiff = cactus.y - (dino.y + dino.height);
+  const xDiff = cactus.x - (dino.x + dino.width) + 20;
+  const yDiff = cactus.y - (dino.y + dino.height) + 10;
 
   if (xDiff < 0 && yDiff < 0) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
