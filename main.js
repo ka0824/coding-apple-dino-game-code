@@ -51,10 +51,10 @@ class Cactus {
 
 const cactusArr = [];
 let animation;
-let score = 0;
 
 let isJump = false;
 let jumpTimer = 0;
+let score = 0;
 
 timer.countSecond();
 document.addEventListener("keydown", function (e) {
@@ -77,6 +77,7 @@ function playFrame() {
   cactusArr.forEach((a, i, o) => {
     if (a.x < 0) {
       o.splice(i, 1);
+      score += 50;
     }
 
     a.x--;
@@ -104,6 +105,9 @@ function playFrame() {
   if (dino.y === 200) {
     jumpTimer = 0;
   }
+
+  ctx.font = "12px gothic";
+  ctx.fillText(`score: ${score}`, 70, 30);
 
   timer.write();
   dino.draw();
