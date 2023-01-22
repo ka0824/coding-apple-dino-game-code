@@ -101,6 +101,10 @@ function playFrame() {
     isJump = false;
   }
 
+  if (dino.y === 200) {
+    jumpTimer = 0;
+  }
+
   timer.write();
   dino.draw();
 }
