@@ -13,9 +13,7 @@ const dino = {
   width: 50,
   height: 50,
   draw() {
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.drawImage(dinoImg, this.x, this.y);
+    ctx.drawImage(dinoImg, this.x, this.y, this.width, this.height);
   },
 };
 dino.draw();
@@ -33,7 +31,7 @@ class Cactus {
   draw() {
     // ctx.fillStyle = "red";
     // ctx.fillRect(this.x, this.y, this.width, this.height);
-    ctx.drawImage(cactusImg, this.x, this.y);
+    ctx.drawImage(cactusImg, this.x, this.y, this.width, this.height);
   }
 }
 
