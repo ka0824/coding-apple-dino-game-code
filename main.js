@@ -18,6 +18,20 @@ const dino = {
 };
 dino.draw();
 
+const timer = {
+  frame: 0,
+  second: 0,
+  write() {
+    ctx.font = "12px gothic";
+    ctx.fillText(`time: ${timer.second}`, 5, 30);
+  },
+  countSecond() {
+    setInterval(() => {
+      this.second++;
+    }, 1000);
+  },
+};
+
 const cactusImg = new Image();
 cactusImg.src = "cactus.png";
 
@@ -35,12 +49,14 @@ class Cactus {
   }
 }
 
-let timer = 0;
 const cactusArr = [];
 let animation;
+let score = 0;
 
 let isJump = false;
 let jumpTimer = 0;
+
+timer.countSecond();
 document.addEventListener("keydown", function (e) {
   if (e.code === "Space") {
     isJump = true;
@@ -49,11 +65,11 @@ document.addEventListener("keydown", function (e) {
 
 function playFrame() {
   animation = requestAnimationFrame(playFrame);
-  timer++;
+  timer.frame++;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height); // 프레임마다 캔버스 모두 지우기
 
-  if (timer % 120 === 0) {
+  if (timer.frame % 120 === 0) {
     const cactus = new Cactus();
     cactusArr.push(cactus);
   }
@@ -85,6 +101,7 @@ function playFrame() {
     isJump = false;
   }
 
+  timer.write();
   dino.draw();
 }
 
